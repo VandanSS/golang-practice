@@ -8,7 +8,6 @@ type Animal interface {
 	Move()
 }
 
-
 type Cow struct{}
 
 func (cow Cow) Eat() {
@@ -22,7 +21,6 @@ func (cow Cow) Move() {
 func (cow Cow) Speak() {
 	fmt.Println("moo")
 }
-
 
 type Bird struct{}
 
@@ -38,7 +36,6 @@ func (bird Bird) Speak() {
 	fmt.Println("peep")
 }
 
-
 type Snake struct{}
 
 func (snake Snake) Eat() {
@@ -53,12 +50,11 @@ func (snake Snake) Speak() {
 	fmt.Println("hsss")
 }
 
-
 func main() {
-	
+
 	var request, str1, str2 string
 	aniMap := make(map[string]Animal)
-	
+
 	cow := Cow{}
 	bird := Bird{}
 	snake := Snake{}
@@ -67,37 +63,36 @@ func main() {
 		fmt.Print(">")
 		fmt.Scan(&request, &str1, &str2)
 
-
 		if request == "newanimal" {
-			
+
 			switch str2 {
-				case "cow":
-					aniMap[str1] = cow
-				case "bird":
-					aniMap[str1] = bird
-				case "snake":
-					aniMap[str1] = snake
-			}		
+			case "cow":
+				aniMap[str1] = cow
+			case "bird":
+				aniMap[str1] = bird
+			case "snake":
+				aniMap[str1] = snake
+			}
 			fmt.Println("Created it!")
 
 		} else if request == "query" {
-		
+
 			ani, exists := aniMap[str1]
-			
+
 			if exists {
-				
+
 				switch str2 {
-					case "eat":
-						ani.Eat()
-					case "move":
-						ani.Move()
-					case "speak":
-						ani.Speak()
+				case "eat":
+					ani.Eat()
+				case "move":
+					ani.Move()
+				case "speak":
+					ani.Speak()
 				}
 			} else {
 				fmt.Println("Invalid input.")
 			}
-			
+
 		} else {
 			fmt.Println("Invalid input")
 		}
